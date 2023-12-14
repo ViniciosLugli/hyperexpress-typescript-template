@@ -1,13 +1,22 @@
-import HyperExpress from 'hyper-express';
+import EndPoint from './base/endpoint';
+import { Request, Response } from 'hyper-express';
+import WebServer from './base/webserver';
+import Route from './base/route';
 
-const webserver = new HyperExpress.Server();
-const PORT = Number(process.env.PORT) || 3000;
+class HelloWorldEndpoint extends EndPoint {
+	public path = '/';
 
-webserver.get('/', (request, response) => {
-	response.send('Hello World');
-});
+	public async get(_request: Request, response: Response): Promise<void> {
+		response.send('Hello, World!');
+	}
+}
 
-webserver
-	.listen(3000)
-	.then((socket) => console.log(`Webserver started on port ${PORT}`))
-	.catch((error) => console.log(`Webserver failed to start: ${error}`));
+const server = new WebServer();
+
+const helloWorldEndpoint = new HelloWorldEndpoint();
+const route = new Route();
+
+route.addEndpoint(helloWorldEndpoint);
+server.addRoute(route);
+
+server.start(3000, '0.0.0.0');

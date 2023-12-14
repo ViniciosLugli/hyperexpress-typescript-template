@@ -1,23 +1,26 @@
 {
 	"name": "hyperexpress-typescript-template",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "server.js",
 	"repository": "git@github.com:ViniciosLugli/hyperexpress-typescript-template.git",
 	"author": "ViniciosLugli <vinicioslugli@gmail.com>",
 	"license": "MIT",
 	"scripts": {
 		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
 		"build": "tsc",
-		"start": "node dist/index.js"
+		"start": "node dist/index.js",
+		"prod": "npm run build && npm run start"
 	},
 	"devDependencies": {
 		"@types/busboy": "^1.5.3",
 		"@types/node": "^20.10.4",
+		"@types/range-parser": "^1.2.7",
 		"nodemon": "^3.0.2",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"colorts": "^0.1.63",
 		"hyper-express": "^6.14.3"
 	}
 }
