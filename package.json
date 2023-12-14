@@ -21,6 +21,7 @@
 	},
 	"dependencies": {
 		"colorts": "^0.1.63",
-		"hyper-express": "^6.14.3"
+		"hyper-express": "^6.14.3",
+		"hyper-express-session": "^1.1.5"
 	}
 }
