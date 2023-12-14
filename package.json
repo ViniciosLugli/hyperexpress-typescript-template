@@ -11,6 +11,7 @@
 		"start": "node dist/index.js"
 	},
 	"devDependencies": {
+		"@types/busboy": "^1.5.3",
 		"@types/node": "^20.10.4",
 		"nodemon": "^3.0.2",
 		"ts-node": "^10.9.2",
