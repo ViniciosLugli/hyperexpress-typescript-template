@@ -8,24 +8,23 @@ class HelloWorldEndpoint extends EndPoint {
 	public path = '/';
 
 	public async get(_request: Request, response: Response): Promise<void> {
-		response.send('Hello, World!');
+		response.send(response.locals.message);
 	}
 }
 
 class HelloWorldMiddleware extends Middleware {
-	public async handle(_request: Request, _response: Response, next: () => void): Promise<void> {
-		console.log('Hello, World! from middleware');
+	public async handle(_request: Request, response: Response, next: () => void): Promise<void> {
+		response.locals.message = 'Hello, World!';
 		next();
 	}
 }
 
 const server = new WebServer();
 
-const helloWorldEndpoint = new HelloWorldEndpoint();
 const route = new Route();
 
 route.add(new HelloWorldMiddleware());
-route.add(helloWorldEndpoint);
+route.add(new HelloWorldEndpoint());
 server.add(route);
 
 server.start(3000, '0.0.0.0');

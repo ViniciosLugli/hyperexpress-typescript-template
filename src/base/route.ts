@@ -32,7 +32,7 @@ class Route {
 		}
 
 		if (this.endpoints.length != 0) {
-			console.log(`Adding endpoints to route ${this.path}`.magenta);
+			console.log(`Adding endpoints to route '${this.path}'`.magenta);
 			this.endpoints.forEach((endpoint) => {
 				const handlers = endpoint.getHandlers();
 				for (const method in handlers) {
