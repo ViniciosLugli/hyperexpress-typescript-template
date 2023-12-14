@@ -18,9 +18,10 @@ class WebServer {
 			.catch((error) => {
 				console.error(error);
 			});
+		this.server.use;
 	}
 
-	public addRoute(route: Route): void {
+	public add(route: Route): void {
 		route.setup(this.server);
 	}
 }

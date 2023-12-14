@@ -1,4 +1,3 @@
-import 'colorts/lib/string';
 import { Request, Response } from 'hyper-express';
 
 interface Handlers {
