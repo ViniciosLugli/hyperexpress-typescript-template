@@ -6,6 +6,7 @@ import Middleware from './middleware';
 class Route {
 	private endpoints: Endpoint[] = [];
 	private middlewares: Middleware[] = [];
+	private routers: Route[] = [];
 	private router: Router;
 	public path: string;
 
@@ -14,15 +15,25 @@ class Route {
 		this.router = new Router();
 	}
 
-	public add(object: Endpoint | Middleware): void {
+	public add(object: Endpoint | Middleware | Route): void {
 		if (object instanceof Endpoint) {
 			this.endpoints.push(object);
 		} else if (object instanceof Middleware) {
 			this.middlewares.push(object);
+		} else if (object instanceof Route) {
+			this.routers.push(object);
 		}
 	}
 
 	public setup(server: Server): void {
+		if (this.routers.length !== 0) {
+			console.log(`Adding routers to route '${this.path}'`.magenta);
+			this.routers.forEach((router) => {
+				console.log(`Adding router '${router.path}' to route '${this.path}'`.magenta);
+				router.setup(server);
+			});
+		}
+
 		if (this.middlewares.length !== 0) {
 			console.log(`Adding middlewares to route '${this.path}'`.magenta);
 			this.middlewares.forEach((middleware) => {
