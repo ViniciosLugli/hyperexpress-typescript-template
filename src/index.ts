@@ -1,10 +1,10 @@
 import { Request, Response } from 'hyper-express';
 import WebServer from './base/webserver';
 import Route from './base/route';
-import EndPoint from './base/endpoint';
+import Endpoint from './base/endpoint';
 import Middleware from './base/middleware';
 
-class HelloWorldEndpoint extends EndPoint {
+class HelloWorldEndpoint extends Endpoint {
 	public path = '/';
 
 	public async get(_request: Request, response: Response): Promise<void> {
