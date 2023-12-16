@@ -4,7 +4,7 @@ interface Handlers {
 	[key: string]: (request: Request, response: Response) => Promise<void>;
 }
 
-abstract class EndPoint {
+abstract class Endpoint {
 	public abstract path: string;
 
 	public get?(request: Request, response: Response): Promise<void>;
@@ -27,5 +27,5 @@ abstract class EndPoint {
 	}
 }
 
-export default EndPoint;
+export default Endpoint;
 export { Handlers };

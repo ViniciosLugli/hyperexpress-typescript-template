@@ -1,10 +1,10 @@
 import 'colorts/lib/string';
 import { Server, Router } from 'hyper-express';
-import EndPoint from './endpoint';
+import Endpoint from './endpoint';
 import Middleware from './middleware';
 
 class Route {
-	private endpoints: EndPoint[] = [];
+	private endpoints: Endpoint[] = [];
 	private middlewares: Middleware[] = [];
 	private router: Router;
 	public path: string;
@@ -14,8 +14,8 @@ class Route {
 		this.router = new Router();
 	}
 
-	public add(object: EndPoint | Middleware): void {
-		if (object instanceof EndPoint) {
+	public add(object: Endpoint | Middleware): void {
+		if (object instanceof Endpoint) {
 			this.endpoints.push(object);
 		} else if (object instanceof Middleware) {
 			this.middlewares.push(object);
