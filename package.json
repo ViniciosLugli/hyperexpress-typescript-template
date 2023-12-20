@@ -6,10 +6,10 @@
 	"author": "ViniciosLugli <vinicioslugli@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-		"build": "tsc",
-		"start": "node dist/index.js",
-		"prod": "npm run build && npm run start"
+		"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r ts-node/register -r tsconfig-paths/register' src/index.ts",
+		"build": "tsc --skipLibCheck",
+		"start": "node -r ts-node/register -r tsconfig-paths/register dist/index.js",
+		"prod": "yarn build && yarn start"
 	},
 	"devDependencies": {
 		"@types/busboy": "^1.5.3",
@@ -17,6 +17,7 @@
 		"@types/range-parser": "^1.2.7",
 		"nodemon": "^3.0.2",
 		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
