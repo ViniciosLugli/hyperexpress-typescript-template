@@ -10,9 +10,7 @@
 		"baseUrl": "./", // Lets you set a base directory to resolve non-absolute module names.
 		"esModuleInterop": true, // fixes some issues TS originally had with the ES6 spec where TypeScript treats CommonJS/AMD/UMD modules similar to ES6 module
 		"moduleResolution": "node", // Pretty much always node for modern JS. Other option is "classic"
-		"paths": {
-			"@base/*": ["src/base/*"],
-		}, // A series of entries which re-map imports to lookup locations relative to the baseUrl
+		"paths": {}, // A series of entries which re-map imports to lookup locations relative to the baseUrl
 		"module": "commonjs", // Specify module code generation: "none", "commonjs", "amd", "system", "umd", "es2015", or "ESNext".
 
 		// Source Map
